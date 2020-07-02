@@ -6,8 +6,13 @@ const renderError = ({ touched, error }) => {
 
 export const renderField = ({ input, placeholder, type, meta }) => {
   return (
-    <div>
-      <input {...input} placeholder={placeholder} type={type} />
+    <div className="input-field">
+      <input
+        {...input}
+        placeholder={placeholder}
+        type={type}
+        autoComplete="off"
+      />
       {renderError(meta)}
     </div>
   );

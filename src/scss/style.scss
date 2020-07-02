@@ -1,4 +1,157 @@
+$color_1: lavender;
+$color_2: #7e8a98;
+$color_3: orange;
 body {
   font-family: "Muli", sans-serif;
   font-size: 15px;
+  margin: 0px;
+  box-sizing: border-box;
+  background-color: $color_1;
+}
+
+form,
+.card {
+  float: left;
+  margin: 10px;
+  background-color: $color_1;
+  width: fit-content;
+  box-sizing: border-box;
+  padding: 30px;
+  width: 300px;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.05),
+    -3px -3px 5px rgba(255, 255, 255, 0.7);
+  button {
+    padding: 10px;
+    box-sizing: border-box;
+    margin: 15px 0px;
+    border-radius: 4px;
+    background-color: $color_3;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.05),
+      -3px -3px 5px rgba(255, 255, 255, 0.7);
+    border: none;
+    cursor: pointer;
+    outline: none;
+    font-size: 15px;
+  }
+  .input-field {
+    margin: 15px 0px;
+    input {
+      box-sizing: border-box;
+      width: 100%;
+      background-color: $color_1;
+      outline: none;
+      border: none;
+      border-bottom: 1px solid $color_2;
+      color: $color_2;
+    }
+  }
+}
+
+.negative-btn {
+  background-color: lightgrey;
+}
+
+.error {
+  position: absolute;
+  color: orangered;
+  font-size: 10px;
+}
+.login-form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  .input-field {
+    input {
+      padding: 10px;
+    }
+  }
+  button {
+    width: 100%;
+    .MuiCircularProgress-root.MuiCircularProgress-colorPrimary.MuiCircularProgress-indeterminate {
+      height: 14px !important;
+      width: 14px !important;
+    }
+  }
+}
+.card {
+  width: 300px;
+  .list-item {
+    margin: 15px 0px;
+  }
+  button {
+    width: 100px;
+    background-color: lightgray;
+  }
+}
+
+.send-btn {
+  position: fixed;
+  bottom: 0px;
+  box-sizing: border-box;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.05),
+    -3px -3px 10px rgba(255, 255, 255, 0.7);
+  overflow: auto;
+  padding: 20px;
+  width: 100%;
+  text-align: right;
+  background-color: $color_1;
+  button {
+    width: 200px;
+    background-color: $color_3;
+    padding: 10px;
+    box-sizing: border-box;
+    border: none;
+    font-size: 15px;
+    outline: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+}
+.invite-form {
+  button {
+    float: left;
+    margin-right: 15px;
+    width: 100px;
+  }
+}
+.add-btn-wrapper {
+  float: left;
+  margin: 10px;
+  height: 210px;
+  width: 100px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .add-btn {
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.05),
+      -3px -3px 5px rgba(255, 255, 255, 0.7);
+    border-radius: 4px;
+    padding: 15px;
+    cursor: pointer;
+  }
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+@media only screen and (max-width: 600px) {
+  .details-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 80px;
+    .add-btn-wrapper {
+      height: 80px;
+    }
+  }
 }

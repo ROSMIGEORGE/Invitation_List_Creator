@@ -1,13 +1,22 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { reduxForm, Field, Form } from "redux-form";
+import { CircularProgress } from "@material-ui/core";
 import { renderField } from "../../_helpers/renderField";
 
 const LoginForm = (props) => {
+  const [submitText, setSubmitText] = useState("Submit");
+
+  useEffect(() => {
+    if (props.errormsg) setSubmitText("Submit");
+  }, [props.errormsg]);
+
   const onSubmit = (formValues) => {
+    setSubmitText(<CircularProgress />);
     props.onSubmit(formValues);
   };
+
   return (
-    <Form onSubmit={props.handleSubmit(onSubmit)}>
+    <Form className="login-form" onSubmit={props.handleSubmit(onSubmit)}>
       <Field
         name="username"
         component={renderField}
@@ -22,7 +31,8 @@ const LoginForm = (props) => {
         type="password"
         autoComplete="off"
       />
-      <button type="submit">submit</button>
+      <button type="submit">{submitText}</button>
+      {props.errormsg ? <div className="error">{props.errormsg}</div> : null}
     </Form>
   );
 };

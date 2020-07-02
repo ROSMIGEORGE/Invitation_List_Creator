@@ -1,17 +1,23 @@
 import React from "react";
 import { connect } from "react-redux";
 import LoginForm from "./forms/LoginForm";
-import { authenticate } from "../actions";
+import { authenticate, reset } from "../actions";
 
 const Login = (props) => {
   const onSubmit = (formValues) => {
+    props.reset();
     props.authenticate(formValues);
   };
   return (
     <div>
-      <LoginForm onSubmit={onSubmit} />
+      <LoginForm onSubmit={onSubmit} errormsg={props.auth.error} />
     </div>
   );
 };
 
-export default connect(null, { authenticate })(Login);
+const mapStateToProps = (state) => {
+  return {
+    auth: state.auth,
+  };
+};
+export default connect(mapStateToProps, { authenticate, reset })(Login);

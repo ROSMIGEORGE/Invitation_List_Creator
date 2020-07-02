@@ -6,6 +6,7 @@ import {
   AUTH_ERROR,
   ADD_ITEM,
   REMOVE_ITEM,
+  RESET,
 } from "../_helpers/types";
 
 //{username:"testuser1",password:"Kruntummy$1"}
@@ -25,6 +26,13 @@ export const authenticate = (formValues) => async (dispatch) => {
   }
 };
 
+export const reset = () => {
+  return {
+    type: RESET,
+    payload: {},
+  };
+};
+
 export const addItem = (formValues) => {
   return {
     type: ADD_ITEM,
@@ -39,17 +47,24 @@ export const removeItem = (key) => {
   };
 };
 
-export const sendItem = () => async (dispatch, getState) => {
+export const sendItems = () => async (dispatch, getState) => {
   let index = 0;
   try {
-    const data = _.map(getState(), (value, key) => {
+    const data = _.map(getState().inviteList, (value) => {
       index++;
       return {
         index: index,
-        email: value.emailId,
-        mobile: value.mobileNumber,
+        email: value.email,
+        mobile: value.mobile,
       };
     });
-    console.log(data);
+    const response = testapi({
+      method: "post",
+      url: "/accounts/send_invitation/",
+      headers: {
+        Authorization: `${getState().auth.access}`,
+      },
+    });
+    console.log(response);
   } catch (error) {}
 };
