@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { reduxForm, Field } from "redux-form";
 import { renderField } from "../../_helpers/renderField";
 
+//form to get email id and mobile number
 const InviteForm = (props) => {
   const buttonRef = React.createRef();
   useEffect(() => {

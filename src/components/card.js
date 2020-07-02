@@ -1,5 +1,6 @@
 import React from "react";
 
+// card that display already collected data
 const Card = (props) => {
   return (
     <div className="card">

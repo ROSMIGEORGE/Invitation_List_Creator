@@ -1,5 +1,6 @@
 import React from "react";
 
+//helper function to render form fields
 const renderError = ({ touched, error }) => {
   return touched && error ? <div className="error">{error}</div> : null;
 };

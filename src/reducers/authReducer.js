@@ -14,6 +14,7 @@ export default (state = INIT_VALUES, action) => {
     case AUTH_ERROR:
       return action.payload;
     case RESET:
+    case END_SESSION:
       return INIT_VALUES;
     default:
       return state;

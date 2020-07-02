@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import LoginForm from "./forms/LoginForm";
 import { authenticate, reset } from "../actions";
 
+//login page
 const Login = (props) => {
   const onSubmit = (formValues) => {
     props.reset();

@@ -3,10 +3,13 @@ import { connect } from "react-redux";
 import _ from "lodash";
 import { Add } from "@material-ui/icons";
 import history from "../_helpers/history";
-import { addItem, removeItem, sendItems } from "../actions";
+import { addItem, removeItem, sendItems, setLoader } from "../actions";
 import Card from "./Card";
 import InviteForm from "./forms/InviteForm";
+import Status from "./Status";
+import NavBar from "./NavBar";
 
+//flow page that takes and displays details
 const Details = (props) => {
   const [showForm, setShowForm] = useState(false);
   const [submitForm, setSubmitForm] = useState(false);
@@ -27,11 +30,13 @@ const Details = (props) => {
         setSubmitForm(false);
       }, 100);
     } else {
+      props.setLoader();
       props.sendItems();
     }
   };
   return (
     <div className="details-container">
+      <NavBar />
       {list.map((item) => (
         <Card key={item.email} item={item} removeItem={props.removeItem} />
       ))}
@@ -51,6 +56,7 @@ const Details = (props) => {
       <div className="send-btn">
         <button onClick={sendItems}>send</button>
       </div>
+      <Status />
     </div>
   );
 };
@@ -61,6 +67,9 @@ const mapStateToProps = (state) => {
     inviteList: state.inviteList,
   };
 };
-export default connect(mapStateToProps, { addItem, removeItem, sendItems })(
-  Details
-);
+export default connect(mapStateToProps, {
+  addItem,
+  removeItem,
+  sendItems,
+  setLoader,
+})(Details);
